@@ -1,0 +1,25 @@
+OUTERNET FREEWARE LICENSE
+
+You are granted a non-exclusive license to use this software for any purposes
+for an unlimited period of time. The software product under this license is
+provided free of charge.
+
+Use within the scope of this License is free of charge and no royalty or
+licensing fees shall be paid by the licensee. Even though a license fee is not
+paid for the use of this free software, it does not mean that there are no
+conditions for using such software:
+
+- The software may be installed and used by the licensee for any legal purpose.
+- The software may be installed and used by the licensee on any number of
+  systems.
+
+The licensee will not have any proprietary rights in and to the software. The
+licensee acknowledges and agrees that the licensor retains all copyrights and
+other proprietary rights in and to the software.
+
+Because this license is granted to the user for no cost, the user is not
+entitled to free technical support.
+
+THE SOFTWARE IS PROVIDED AS-IS, WITHOUT WARRANTY OF ANY KIND. IN NO EVENT SHALL
+OUTERNET BE LIABLE FOR ANY CLAIM, DAMAGES, OR OTHER LIABILITY ASSOCIATED WITH
+THE USE OR DISTRIBUTION OF THIS SOFTWARE. 
