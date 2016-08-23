@@ -43,11 +43,15 @@ Running the decoder
 -------------------
 
 With the demodulator running, open up a new terminal window to start the
-decoder.
+decoder. ::
 
     $ sudo decoder
 
 Output from the decoder will be logged in the terminal where you started it.
+
+To run the decoder with paths different from the ones in this guide::
+
+    $ sudo decoder -c /path/to/cache -o /path/to/downloads
 
 What next?
 ----------
