@@ -5,6 +5,10 @@ Outernet L-band for desktop Linux
 These files are used to build Outernet L-band receivers using a desktop Linux
 distribution. Currently only 64-bit Linux is supported.
 
+Full guide is here:
+
+    http://outernet-l-band-on-linux.readthedocs.io
+
 Installing
 ----------
 
