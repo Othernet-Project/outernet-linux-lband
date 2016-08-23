@@ -30,9 +30,9 @@ The binary files closed-source are released under the proprietary freeware
 licenses:
 
 - ``sdr100*`` - see `SDR100_LICENSE.txt
-  <https://raw.githubusercontent.com/Outernet-Project/outernet-linux-lband/master/ONDD_LICENSE.txt>`_
-- ``ondd*`` - see `ONDD_LICENSE.txt
   <https://raw.githubusercontent.com/Outernet-Project/outernet-linux-lband/master/SDR100_LICENSE.txt>`_
+- ``ondd*`` - see `ONDD_LICENSE.txt
+  <https://raw.githubusercontent.com/Outernet-Project/outernet-linux-lband/master/ONDD_LICENSE.txt>`_
 
 The scripts in the repository including any example scripts found in the
 documentation folder are released under GNU GPL version 3 or any later
