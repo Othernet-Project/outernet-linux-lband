@@ -1,5 +1,5 @@
 Running the programs
---------------------
+====================
 
 We are now ready to run the demodulator and the decoder. Before we do that,
 though, we need to connect the radio and the antenna.
