@@ -31,8 +31,8 @@ Documentation about command line options will be provided as appropriate, but
 daemonization (or conversion into proper system services) is going to be left
 to you as an exercise.
 
-In a proper Outernet receiver, there is usually a few more components, like the
-web-based user interface software. Since the purpose of such software is to
+In a proper Outernet receiver, there are usually a few more components, like
+the web-based user interface software. Since the purpose of such software is to
 provide access to files from outside the receiver, they will not be covered in
 this guide. It is assumed that, on a regular desktop Linux, user will have
-enogh options for getting access to files locally.
+enough options for getting access to files locally.
