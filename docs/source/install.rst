@@ -42,8 +42,8 @@ Installing the build tools
 The library used by the demodulator will need to be built on your machine, so
 build tools will need to be installed. On most distros, the build tools usually
 come as a single package/metapackage that are named build-essential,
-base-devel, and similar name. Additionally pkg-config and development headers
-for libusb 1.0 should also be installed.
+base-devel, and similar. Additionally pkg-config and development headers for
+libusb 1.0 should also be installed.
 
 Here are some ways to install them on different distros.
 
