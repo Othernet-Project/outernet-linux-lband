@@ -2,7 +2,7 @@
 
 PREFIX="%PREFIX%"
 PRESETS_FILE="$PREFIX/share/outernet/presets"
-PRESETS_URL="https://raw.githubusercontent.com/Outernet-Project/outernet-linux-lband/master/profiles.sh"
+PRESETS_URL="https://raw.githubusercontent.com/Outernet-Project/outernet-linux-lband/master/presets.sh"
 
 . "$PRESETS_FILE"
 
@@ -27,8 +27,9 @@ exit 0
 }
 
 updateprofiles() {
-  printf "Fetching the profiles... "
-  if wget "$PRESETS_URL" -O "$PRESETS_FILE" >/dev/null 2>/dev/null; then
+  #printf "Fetching the profiles... "
+  printf "Fetching update from $PRESETS_URL: "
+  if wget --no-check-certificate -q "$PRESETS_URL" -O "$PRESETS_FILE"; then
     echo "OK"
   else
     echo "FAIL"
