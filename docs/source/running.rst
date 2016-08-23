@@ -53,6 +53,15 @@ To run the decoder with paths different from the ones in this guide::
 
     $ sudo decoder -c /path/to/cache -o /path/to/downloads
 
+Updating demodulator presets
+----------------------------
+
+The L-band presets used by ``demod-presets`` command may change from time to
+time. The program has an update feature which you can use to fetch the updated
+presets. To use this feature, run::
+
+    $ sudo demod-presets update
+
 What next?
 ----------
 
