@@ -23,8 +23,8 @@ You can always specify these paths when starting the decoder, but if you don't
 want to keep remembering the command line options, it's easier to set the
 environment variables::
 
-    $ echo 'ONDD_DATA="/srv/downloads"' | sudo tee -a /etc/profile
-    $ echo 'ONDD_CACHE="/var/spool/ondd"' | sudo tee -a /etc/profile
+    $ echo 'export ONDD_DATA="/srv/downloads"' | sudo tee -a /etc/profile
+    $ echo 'export ONDD_CACHE="/var/spool/ondd"' | sudo tee -a /etc/profile
 
 An alternative is to create an alias::
 
