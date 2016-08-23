@@ -28,7 +28,7 @@ environment variables::
 
 An alternative is to create an alias::
 
-    $ alias decoder='/usr/local/bin/decoder -o /srv/downloads -c /var/spool/ondd'
+    $ alias decoder='sudo /usr/local/bin/decoder -o /srv/downloads -c /var/spool/ondd'
 
 Add the above command to your ``~/.bashrc`` or whatever your shell starup
 file is. 
