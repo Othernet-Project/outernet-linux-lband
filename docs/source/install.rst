@@ -65,6 +65,11 @@ Opensuse::
     $ sudo zypper install --type pattern devel_basis
     $ sudo zypper install pkg-config libusb-1_0
 
+.. note::
+    If your distro is not covered here and you are not sure how to install the
+    build tools, try searching online for 'build-essential equivalent for <your
+    distro name here>'.
+
 Installing StarSDR
 ------------------
 
