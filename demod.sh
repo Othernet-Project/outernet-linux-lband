@@ -23,7 +23,7 @@ get_radio() {
 }
 
 rtlsdr_demod() {
-  rmmod -f dvb_usb_rtl128xxu 2>/dev/null
+  rmmod -f dvb_usb_rtl128xxu
   rtl_biast -b 1
   sdr100 "$@"
 }
