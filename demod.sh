@@ -29,7 +29,7 @@ rtlsdr_demod() {
 }
 
 mirics_demod() {
-  LD_LIBRARY_PATH="$STARSDR_PATH/starsdr-mirics" sdr100 "$@"
+  sdr100 "$@"
 }
 
 radio="$(get_radio)"
