@@ -8,6 +8,7 @@ RULES="/etc/udev/rules.d/99-sdr.rules"
 ONDD_VERSION=2.2.0
 SDR100_VERSION=1.0.4
 INST_STYLE="normal"
+VERSION="1.0a3"
 
 inst_file() {
   mode="$1"
@@ -90,6 +91,7 @@ inst() {
   inst_file 644 "SDR100_LICENSE.txt" "${SHAREDIR}/SDR100_LICENSE.txt"
   inst_file 644 "COPYING.StarSDR" "${SHAREDIR}/COPYING.StarSDR"
   inst_file 644 "ca.crt" "${SHAREDIR}/ca.crt"
+  echo "$VERSION" > "${SHAREDIR}/version"
 
   echo "Configuring scripts"
   patch_script "${BINDIR}/demod"
