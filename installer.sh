@@ -46,6 +46,16 @@ uninst() {
   echo "Finished"
 }
 
+if [ "$USER" != root ]; then
+  cat <<EOF
+ERROR: Permission denied
+This program must be run with root permissions.
+Use sudo or log in as root.
+EOF
+  exit 1
+fi
+
+
 case "$1" in
   uninstall)
     uninst
