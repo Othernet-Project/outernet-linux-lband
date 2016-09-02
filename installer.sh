@@ -7,6 +7,7 @@ RULESFILE="${SHAREDIR}/99-sdr.rules"
 RULES="/etc/udev/rules.d/99-sdr.rules"
 ONDD_VERSION=2.2.0
 SDR100_VERSION=1.0.4
+INST_STYLE="normal"
 
 inst_file() {
   mode="$1"
@@ -49,6 +50,24 @@ configure_udev() {
   echo "********************************************"
 }
 
+readopt() {
+  prompt="$1"
+  default_value="$2"
+  if [ "$INST_STYLE" = "quick" ]; then
+    val="$default_value"
+    return
+  fi
+  echo
+  printf "$prompt"
+  read val
+  [ -z "$val" ] && val="$default_value"
+}
+
+is_yes() {
+  val="$1"
+  [ "$val" != n ] && [ "$val" != N ]
+}
+
 inst() {
   inst_file 755 "bin/demod.sh" "${BINDIR}/demod"
   inst_file 755 "bin/demod-presets.sh" "${BINDIR}/demod-presets"
@@ -84,39 +103,32 @@ inst() {
   echo
   echo "---------------------------------------------------------------------"
 
-  echo
-  printf "Would you like me to configure udev for you? [y/N] "
-  read config_udev
-
-  if [ "$config_udev" = y ] || [ "$config_udev" = Y ]; then
+  readopt "Would you like to configure udev? [Y/n] " "y"
+  config_udev="$val"
+  if is_yes "$config_udev"; then
     configure_udev
   fi
 
   echo "---------------------------------------------------------------------"
   echo
-  echo "Choose the download and spool directories"
+  echo "Choose cache and download paths"
   echo
   echo "---------------------------------------------------------------------"
 
-  echo
-  printf "Temporary download path [/var/spool/ondd]: "
-  read spooldir
+  readopt "Download cache path [/var/spool/ondd]: " "/var/spool/ondd"
+  spooldir="$val"
 
-  echo
-  printf "Download storage path [/srv/downloads]: "
-  read dldir
+  readopt "Download storage path [/srv/downloads]: " "/srv/downloads"
+  dldir="$val"
 
-  [ -z "$spooldir" ] && spooldir="/var/spool/ondd"
-  [ -z "$dldir" ] && dldir="/srv/downloads"
+  readopt "Create download paths? [Y/n] " "y"
+  mkpaths="$val"
 
-  echo
-  printf "Create temporary and permanent download paths? [Y/n]"
-  read mkpaths
-
-  if [ "$mkpaths" != n ] && [ "$mkpaths" != N ]; then
+  if is_yes "$mkpaths"; then
     mkdir -p "$spooldir" "$dldir"
     chmod 777 "$spooldir"
     chmod 777 "$dldir"
+    echo "Created download paths"
   fi
   sed -ie "s|%CACHE%|$spooldir|g;s|%DOWNLOADS%|$dldir|g" "${BINDIR}/decoder"
 
@@ -152,6 +164,10 @@ fi
 case "$1" in
   uninstall)
     uninst
+    ;;
+  quick)
+    INST_STYLE="quick"
+    inst
     ;;
   *)
     inst
