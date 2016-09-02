@@ -2,6 +2,7 @@
 
 ONDD_CACHE="${ONDD_DATA:=%CACHE%}"
 ONDD_DATA="${ONDD_DATA:=%DOWNLOADS%}"
+CERT_PATH="%SHAREDIR%/ca.crt"
 
 
 usage() {
@@ -50,5 +51,7 @@ done
 
 mkdir -p "$ONDD_CACHE"
 mkdir -p "$ONDD_DATA"
+mkdir -p /tmp/run
 
-ondd -V -D /var/run/ondd.data -c "$ONDD_CACHE" -O "$ONDD_DATA"
+ondd -V -D /tmp/run/ondd.data -c "$ONDD_CACHE" -O "$ONDD_DATA" \
+  --cert-file "$CERT_PATH"

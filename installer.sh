@@ -5,7 +5,6 @@ BINDIR="${PREFIX}/bin"
 SHAREDIR="${PREFIX}/share/outernet"
 RULESFILE="${SHAREDIR}/99-sdr.rules"
 RULES="/etc/udev/rules.d/99-sdr.rules"
-CRTDIR="/etc/outernet"
 ONDD_VERSION=2.2.0
 SDR100_VERSION=1.0.4
 
@@ -19,7 +18,7 @@ inst_file() {
 
 patch_script() {
   target="$1"
-  sed -ie "s|%PREFIX%|$PREFIX|g" "$target"
+  sed -ie "s|%PREFIX%|$PREFIX|g;s|%SHAREDIR%|$SHAREDIR|g" "$target"
 }
 
 rule() {
@@ -71,11 +70,12 @@ inst() {
   inst_file 644 "ONDD_LICENSE.txt" "${SHAREDIR}/ONDD_LICENSE.txt"
   inst_file 644 "SDR100_LICENSE.txt" "${SHAREDIR}/SDR100_LICENSE.txt"
   inst_file 644 "COPYING.StarSDR" "${SHAREDIR}/COPYING.StarSDR"
-  inst_file 644 "ca.crt" "${CRTDIR}/ca.crt"
+  inst_file 644 "ca.crt" "${SHAREDIR}/ca.crt"
 
   echo "Configuring scripts"
   patch_script "${BINDIR}/demod"
   patch_script "${BINDIR}/demod-presets"
+  patch_script "${BINDIR}/decoder"
 
   echo "---------------------------------------------------------------------"
   echo
@@ -129,7 +129,6 @@ uninst() {
     rm "${BINDIR}"/${binary}
   done
 	rm -rf "${SHAREDIR}"
-  rm -rf "${CRTDIR}"
   if [ -e "$RULES" ]; then
     rm -f "$RULES"
     udevadm control --reload
