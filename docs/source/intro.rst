@@ -23,6 +23,9 @@ software work together.
     eco-system, which is predominantly open-source, the demodulator and decoder
     are closed-source freeware.
 
+The relevant license files are installed in ``/usr/local/share/outernet``
+folder by the installer.
+
 The software involved in this set-up is meant to be used as long-running
 background processes (a.k.a. daemons). Some of the programs already provide
 features that let them run as proper well-behaved daemons, while others do not.
