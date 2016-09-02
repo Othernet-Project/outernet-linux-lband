@@ -22,20 +22,25 @@ get_radio() {
   [ "$nradios" = 1 ] && echo "$radios"
 }
 
+killmod() {
+  modname="$1"
+  lsmod | grep -q "$modname" && rmmod -f "$modname"
+}
+
 rtlsdr_demod() {
-  rmmod -f dvb_usb_rtl128xxu
+  killmod dvb_usb_rtl128xxu
   rtl_biast -b 1
   sdr100 "$@"
 }
 
 mirics_demod() {
+  killmod miri_sdr
   sdr100 "$@"
 }
 
 radio="$(get_radio)"
 
 # Sanity checks
-[ "$USER" = root ] || fail "This program must be run as root"
 [ -d "$STARSDR_PATH" ] || fail "StarSDR is not installed"
 [ -z "$radio" ] && fail "No usable radio detected"
 

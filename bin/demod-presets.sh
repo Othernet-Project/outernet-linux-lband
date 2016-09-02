@@ -20,7 +20,7 @@ parameters:
 supported profiles:
 
   americas  North and South Americas
-  eurasia   Europe, Africa, Middle East
+  euraf     Europe, Africa, Middle East
   apac      Asia, Pacific
 EOF
 exit 0
@@ -39,11 +39,6 @@ updateprofiles() {
 rundemod() {
   demod $ARGS
 }
-
-if [ "$USER" != root ]; then
-  echo "This command must be run as root"
-  exit 1
-fi
 
 [ -z "$1" ] && usage
 
@@ -64,6 +59,6 @@ case "$1" in
     updateprofiles
     ;;
   *)
-    echo "ERROR: Unknown profile"
+    echo "ERROR: Unknown profile: $1"
     usage
 esac

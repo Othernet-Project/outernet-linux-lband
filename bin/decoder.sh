@@ -1,7 +1,8 @@
 #!/bin/sh
 
-ONDD_CACHE="${ONDD_DATA:=/var/spool/ondd}"
-ONDD_DATA="${ONDD_DATA:=/srv/downloads}"
+ONDD_CACHE="${ONDD_DATA:=%CACHE%}"
+ONDD_DATA="${ONDD_DATA:=%DOWNLOADS%}"
+CERT_PATH="%SHAREDIR%/ca.crt"
 
 
 usage() {
@@ -30,8 +31,6 @@ fail() {
   exit 1
 }
 
-[ "$USER" = root ] || fail "This program must be run as root"
-
 while getopts "o:c:" opt; do
   case "$opt" in
     h)
@@ -52,5 +51,7 @@ done
 
 mkdir -p "$ONDD_CACHE"
 mkdir -p "$ONDD_DATA"
+mkdir -p /tmp/run
 
-ondd -V -D /var/run/ondd.data -c "$ONDD_CACHE" -O "$ONDD_DATA"
+ondd -V -D /tmp/run/ondd.data -c "$ONDD_CACHE" -O "$ONDD_DATA" \
+  --cert-file "$CERT_PATH"
