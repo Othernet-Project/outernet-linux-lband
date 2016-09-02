@@ -28,13 +28,15 @@ killmod() {
 }
 
 rtlsdr_demod() {
-  killmod dvb_usb_rtl128xxu
+  killmod "rtl2830"
+  killmod "rtl2832"
+  killmod "dvb_usb_rtl128xxu"
   rtl_biast -b 1
   sdr100 "$@"
 }
 
 mirics_demod() {
-  killmod miri_sdr
+  killmod "miri_sdr"
   sdr100 "$@"
 }
 
