@@ -46,17 +46,12 @@ uninst() {
   echo "Finished"
 }
 
-
 case "$1" in
-  install)
-    inst
-    ;;
   uninstall)
     uninst
     ;;
   *)
-    echo "ERROR: invalid command"
-    exit 1
+    inst
 esac
 
 exit $?
