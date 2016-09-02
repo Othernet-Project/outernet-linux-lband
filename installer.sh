@@ -3,6 +3,8 @@
 PREFIX="${PREFIX:=/usr/local}"
 BINDIR="${PREFIX}/bin"
 SHAREDIR="${PREFIX}/share/outernet"
+RULESFILE="${SHAREDIR}/99-sdr.rules"
+RULES="/etc/udev/rules.d/99-sdr.rules"
 CRTDIR="/etc/outernet"
 ONDD_VERSION=2.2.0
 SDR100_VERSION=1.0.4
@@ -18,6 +20,34 @@ inst_file() {
 patch_script() {
   target="$1"
   sed -ie "s|%PREFIX%|$PREFIX|g" "$target"
+}
+
+rule() {
+  vid="$1"
+  pid="$2"
+  [ -z "$vid" ] && return
+  rule='SUBSYSTEM=="usb",'
+  rule="$rule ATTR{idVendor}==\"$vid\","
+  rule="$rule ATTR{idProduct}==\"$pid\","
+  rule="$rule MODE=\"0666\""
+  echo "$rule"
+}
+
+configure_udev() {
+  echo "Generating udev rules"
+  printf '' > "$RULESFILE"
+  while read sdrdev; do
+    ids="$(echo "$sdrdev" | cut -d\; -f1)"
+    vid="$(echo "$ids" | cut -d: -f1)"
+    pid="$(echo "$ids" | cut -d: -f2)"
+    rule "$vid" "$pid" >> "$RULESFILE"
+  done < "sdrids.txt"
+  echo "Linking $RULES -> $RULESFILE"
+  ln -sf "$RULESFILE" "$RULES"
+  udevadm control --reload
+  echo "********************************************"
+  echo "NOTE: You will need to reconnect your radio."
+  echo "********************************************"
 }
 
 inst() {
@@ -45,6 +75,17 @@ inst() {
   echo "Configuring scripts"
   patch_script "${BINDIR}/demod"
   patch_script "${BINDIR}/demod-presets"
+  echo "---------------------------------------------------------------------"
+  echo
+  echo "By default radios are only accessible as root."
+  echo "In order to use the radios as non-root user, udev must be configured."
+  echo
+  echo "---------------------------------------------------------------------"
+  printf "Would you like me to configure udev for you? [y/N] "
+  read config_udev
+  if [ "$config_udev" = y ] || [ "$config_udev" = Y ]; then
+    configure_udev
+  fi
   echo "Finished"
 }
 
@@ -55,6 +96,13 @@ uninst() {
   done
 	rm -rf "${SHAREDIR}"
   rm -rf "${CRTDIR}"
+  if [ -e "$RULES" ]; then
+    rm -f "$RULES"
+    udevadm control --reload
+    echo "********************************************"
+    echo "NOTE: You will need to reconnect your radio."
+    echo "********************************************"
+  fi
   echo "Finished"
 }
 
