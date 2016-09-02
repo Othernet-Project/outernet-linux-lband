@@ -15,7 +15,7 @@ The demodulator needs a few parameters so it knows how to set up the tuner. The
 frequencies. If you run this command without any arguments, you will get a list
 of presets (among other things)::
 
-    $ sudo demod-presets
+    $ demod-presets
     Usage:
       /usr/local/bin/demod-presets PROFILE
       /usr/local/bin/demod-presets update
@@ -34,7 +34,7 @@ of presets (among other things)::
 Pick a preset for your region and run ``demod-presets`` again. For example,
 let's run it with ``euraf`` preset::
 
-    $ sudo demod-presets euraf
+    $ demod-presets euraf
 
 .. image:: img/demod.jpg
     :alt: Image of the demodulator running with euraf preset
@@ -45,13 +45,13 @@ Running the decoder
 With the demodulator running, open up a new terminal window to start the
 decoder. ::
 
-    $ sudo decoder
+    $ decoder
 
 Output from the decoder will be logged in the terminal where you started it.
 
 To run the decoder with paths different from the ones in this guide::
 
-    $ sudo decoder -c /path/to/cache -o /path/to/downloads
+    $ decoder -c /path/to/cache -o /path/to/downloads
 
 Updating demodulator presets
 ----------------------------
