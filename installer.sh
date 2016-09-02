@@ -53,7 +53,7 @@ configure_udev() {
 inst() {
   inst_file 755 "bin/demod.sh" "${BINDIR}/demod"
   inst_file 755 "bin/demod-presets.sh" "${BINDIR}/demod-presets"
-  inst_file 755 "decoder.sh" "${BINDIR}/decoder"
+  inst_file 755 "bin/decoder.sh" "${BINDIR}/decoder"
   inst_file 644 "presets.sh" "${SHAREDIR}/presets"
   inst_file 755 "bin/ondd-${ONDD_VERSION}" "${BINDIR}/ondd"
   inst_file 755 "bin/sdr100-${SDR100_VERSION}" "${BINDIR}/sdr100"
