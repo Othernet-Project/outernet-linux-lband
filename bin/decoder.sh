@@ -30,8 +30,6 @@ fail() {
   exit 1
 }
 
-[ "$USER" = root ] || fail "This program must be run as root"
-
 while getopts "o:c:" opt; do
   case "$opt" in
     h)
