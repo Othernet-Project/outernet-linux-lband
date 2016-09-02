@@ -41,7 +41,6 @@ mirics_demod() {
 radio="$(get_radio)"
 
 # Sanity checks
-[ "$USER" = root ] || fail "This program must be run as root"
 [ -d "$STARSDR_PATH" ] || fail "StarSDR is not installed"
 [ -z "$radio" ] && fail "No usable radio detected"
 
