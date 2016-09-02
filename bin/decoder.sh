@@ -53,5 +53,5 @@ mkdir -p "$ONDD_CACHE"
 mkdir -p "$ONDD_DATA"
 mkdir -p /tmp/run
 
-ondd -V -D /tmp/run/ondd.data -c "$ONDD_CACHE" -O "$ONDD_DATA" \
+ondd -V -D /tmp/run/ondd.data -c "$ONDD_CACHE" -o "$ONDD_DATA" \
   --cert-file "$CERT_PATH"
