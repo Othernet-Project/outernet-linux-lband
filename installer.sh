@@ -81,11 +81,34 @@ inst() {
   echo "In order to use the radios as non-root user, udev must be configured."
   echo
   echo "---------------------------------------------------------------------"
+  echo
   printf "Would you like me to configure udev for you? [y/N] "
   read config_udev
   if [ "$config_udev" = y ] || [ "$config_udev" = Y ]; then
     configure_udev
   fi
+  echo "---------------------------------------------------------------------"
+  echo
+  echo "Choose the download and spool directories"
+  echo
+  echo "---------------------------------------------------------------------"
+  echo
+  printf "Temporary download path [/var/spool/ondd]: "
+  read spooldir
+  echo
+  printf "Download storage path [/srv/downloads]: "
+  read dldir
+  [ -z "$spooldir" ] && spooldir="/var/spool/ondd"
+  [ -z "$dldir" ] && dldir="/srv/downloads"
+  echo
+  printf "Create temporary and permanent download paths? [Y/n]"
+  read mkpaths
+  if [ "$mkpaths" != n ] && [ "$mkpaths" != N ]; then
+    mkdir -p "$spooldir" "$dldir"
+    chmod 777 "$spooldir"
+    chmod 777 "$dldir"
+  fi
+  sed -ie "s|%CACHE%|$spooldir|g;s|%DOWNLOADS%|$dldir|g" "${BINDIR}/decoder"
   echo "Finished"
 }
 

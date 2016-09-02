@@ -1,7 +1,7 @@
 #!/bin/sh
 
-ONDD_CACHE="${ONDD_DATA:=/var/spool/ondd}"
-ONDD_DATA="${ONDD_DATA:=/srv/downloads}"
+ONDD_CACHE="${ONDD_DATA:=%CACHE%}"
+ONDD_DATA="${ONDD_DATA:=%DOWNLOADS%}"
 
 
 usage() {
