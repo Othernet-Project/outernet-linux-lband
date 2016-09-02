@@ -1,4 +1,4 @@
-#!/bin/sh 
+#!/bin/sh
 
 PREFIX="${PREFIX:=/usr/local}"
 BINDIR="${PREFIX}/bin"
@@ -21,16 +21,26 @@ patch_script() {
 }
 
 inst() {
-  inst_file 755 "demod.sh" "${BINDIR}/demod"
-  inst_file 755 "demod-presets.sh" "${BINDIR}/demod-presets"
+  inst_file 755 "bin/demod.sh" "${BINDIR}/demod"
+  inst_file 755 "bin/demod-presets.sh" "${BINDIR}/demod-presets"
   inst_file 755 "decoder.sh" "${BINDIR}/decoder"
   inst_file 644 "presets.sh" "${SHAREDIR}/presets"
-  inst_file 755 "ondd-${ONDD_VERSION}" "${BINDIR}/ondd"
-  inst_file 755 "sdr100-${SDR100_VERSION}" "${BINDIR}/sdr100"
+  inst_file 755 "bin/ondd-${ONDD_VERSION}" "${BINDIR}/ondd"
+  inst_file 755 "bin/sdr100-${SDR100_VERSION}" "${BINDIR}/sdr100"
+  inst_file 755 "bin/rtl_biast" "${BINDIR}/rtl_biast"
+  inst_file 755 "sdr.d/starsdr-mirics/libmirisdr.so" \
+    "${PREFIX}/sdr.d/starsdr-mirics/libmirisdr.so"
+  inst_file 755 "sdr.d/starsdr-mirics/libstarsdr.so" \
+    "${PREFIX}/sdr.d/starsdr-mirics/libstarsdr.so"
+  inst_file 755 "sdr.d/starsdr-rtlsdr/librtlsdr.so" \
+    "${PREFIX}/sdr.d/starsdr-rtlsdr/librtlsdr.so"
+  inst_file 755 "sdr.d/starsdr-rtlsdr/libstarsdr.so" \
+    "${PREFIX}/sdr.d/starsdr-rtlsdr/libstarsdr.so"
   inst_file 644 "sdrids.txt" "${SHAREDIR}/sdrids.txt"
   inst_file 644 "COPYING" "${SHAREDIR}/COPYING"
   inst_file 644 "ONDD_LICENSE.txt" "${SHAREDIR}/ONDD_LICENSE.txt"
   inst_file 644 "SDR100_LICENSE.txt" "${SHAREDIR}/SDR100_LICENSE.txt"
+  inst_file 644 "COPYING.StarSDR" "${SHAREDIR}/COPYING.StarSDR"
   inst_file 644 "ca.crt" "${CRTDIR}/ca.crt"
   echo "Configuring scripts"
   patch_script "${BINDIR}/demod"
@@ -40,7 +50,9 @@ inst() {
 
 uninst() {
   echo "Uninstalling"
-	rm "${BINDIR}"/{demod,demod-presets,ondd,sdr100}
+  for binary in demod demod-presets ondd sdr100; do
+    rm "${BINDIR}"/${binary}
+  done
 	rm -rf "${SHAREDIR}"
   rm -rf "${CRTDIR}"
   echo "Finished"
