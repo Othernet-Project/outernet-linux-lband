@@ -7,9 +7,11 @@ demodulator and decoder software on a desktop Linux operating system. As of
 this writing, only 64-bit versions of Linux are supported. 32-bit version are
 in the works.
 
-.. note::
-    In theory, this guide should work in a virtual machine with slight
-    modifications, but virtual machines are outside the scope of this guide.
+As part of the software repository, a Vagrantfile is provided for use with
+`Vagrant <http://vagrantup.com/>`_ and `VirtualBox
+<https://www.virtualbox.org/>`_. This file can be used to (automatically)
+install and run all the required software on any computer that supports
+VirtualBox (including Windows and OSX).
 
 .. warning::
     This guide is a work in progress and may contain wrong and/or incomplete
@@ -53,6 +55,7 @@ Guide contents
 
     requirements
     intro
+    virtual
     install
     running
     troubleshooting

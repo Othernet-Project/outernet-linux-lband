@@ -1,9 +1,11 @@
 Requirements
 ============
 
+The Outernet software can be run either on a native Linux install, or within a
+virtual machine.
+
 In order to follow this guide, you will need:
 
-- A Linux operating system
 - RTL-SDR USB dongle
 - LNA
 - patch antenna
@@ -12,6 +14,3 @@ In order to follow this guide, you will need:
 
 The RTL-SDR radio dongle, LNA, and antenna, can be purchased `through Outernet
 <https://outernet.is/products>`_ either individually or as a kit.
-
-.. note::
-    The author of this guide uses Arch Linux, in case you are wondering.
