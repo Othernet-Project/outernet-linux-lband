@@ -1,5 +1,5 @@
-Biringing up Outernet software in a virtual machine
-===================================================
+Installing the Outernet software in a virtual machine
+=====================================================
 
 The Outernet software can be run within a virtual machine on platforms
 supported by `VirtualBox <https://virtualbox.org/>`_. As of this writing, this
