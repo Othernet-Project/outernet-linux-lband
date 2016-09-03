@@ -51,7 +51,7 @@ If you are on Windows, and you don't have OpenSSH installed, you can use `PuTTY
 .. image:: img/putty_vagrant.jpg
     :alt: PuTTY configured to connect to a virtual machine
 
-The password is ``vagrant``.
+Once connected, the password is ``vagrant``.
 
 To run the Outernet software, follow the :doc:`running` section.
 
