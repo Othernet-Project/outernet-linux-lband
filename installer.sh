@@ -8,7 +8,7 @@ RULES="/etc/udev/rules.d/99-sdr.rules"
 ONDD_VERSION=2.2.0
 SDR100_VERSION=1.0.4
 INST_STYLE="normal"
-VERSION="1.0a5"
+VERSION="1.0a6"
 
 inst_file() {
   mode="$1"
