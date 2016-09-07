@@ -1,9 +1,9 @@
 Introduction
 ============
 
-The files that are datacast by Outernet are encoded, modulated, and sent to
+The files that are datacast by Outernet are encoded, modulated, and uplinked to
 several Inmarsat satellites. These satellites transmit the radio waves in the
-`L band frequency range <https://en.wikipedia.org/wiki/L_band>`_. The waves are
+`L-band frequency range <https://en.wikipedia.org/wiki/L_band>`_. The waves are
 received by a radio on your receiver and then passed on to the software
 demodulator. The demodulator turns the analog signal into bits and then passes
 them onto the decoder, which extracts the file information from the data and
@@ -37,5 +37,5 @@ to you as an exercise.
 In a proper Outernet receiver, there are usually a few more components, like
 the web-based user interface software. Since the purpose of such software is to
 provide access to files from outside the receiver, they will not be covered in
-this guide. It is assumed that, on a regular desktop Linux, user will have
+this guide. It is assumed that, on regular desktop Linux, the user will have
 enough options for getting access to files locally.
