@@ -7,8 +7,8 @@ virtual machine.
 In order to follow this guide, you will need:
 
 - RTL-SDR USB dongle
-- LNA
-- patch antenna
+- LNA (low noise amplifier)
+- Patch antenna
 - Internet connection
 - Basic familiarity with the Linux command line shell
 
