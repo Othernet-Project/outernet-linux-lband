@@ -1,6 +1,12 @@
 Installing the Outernet software in a virtual machine
 =====================================================
 
+.. warning::
+    Please not that this method of running the Outernet L-band software has not
+    yet been confirmed as working. We are leaving the instructions and
+    associated files here in case they happen to work for you. (And we would
+    defintiely like to know about it, too!)
+
 The Outernet software can be run within a virtual machine on platforms
 supported by `VirtualBox <https://virtualbox.org/>`_. As of this writing, this
 includes Linux, Windows, OSX, OpenSolaris, and OpenBSD.
