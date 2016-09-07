@@ -22,9 +22,15 @@ get_radio() {
   [ "$nradios" = 1 ] && echo "$radios"
 }
 
+delmod() {
+  modname="$1"
+  echo "Attempting to remove driver '$modname'"
+  sudo rmmmod -f "$modname"
+}
+
 killmod() {
   modname="$1"
-  lsmod | grep -q "$modname" && rmmod -f "$modname"
+  lsmod | grep -q "$modname" && delmod "$modname"
 }
 
 rtlsdr_demod() {
